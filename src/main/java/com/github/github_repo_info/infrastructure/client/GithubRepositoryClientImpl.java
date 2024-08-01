@@ -1,7 +1,7 @@
 package com.github.github_repo_info.infrastructure.client;
 
 import com.github.github_repo_info.domain.GithubApiConfigurationProperties;
-import com.github.github_repo_info.domain.RepositoryInfo;
+import com.github.github_repo_info.domain.Repository;
 import com.github.github_repo_info.domain.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
@@ -19,17 +19,17 @@ public class GithubRepositoryClientImpl implements GithubRepositoryClient {
     private final GithubApiConfigurationProperties properties;
 
     @Override
-    public List<RepositoryInfo> fetchRepositories(String username) {
+    public List<Repository> fetchRepositories(String username) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept","application/json");
         headers.set("Authorization", "token " + properties.getToken());
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
-        ResponseEntity<RepositoryInfo[]> response = restTemplate.exchange(
+        ResponseEntity<Repository[]> response = restTemplate.exchange(
                 properties.getUrl(),
                 HttpMethod.GET,
                 requestEntity,
-                RepositoryInfo[].class
+                Repository[].class
         );
         return Optional.ofNullable(response.getBody())
                 .map(Arrays::asList)
