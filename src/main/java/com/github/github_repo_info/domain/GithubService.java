@@ -12,11 +12,12 @@ public class GithubService {
 
     private final GithubRepositoryClient githubClient;
 
-    public List<RepositoryInfo> findReposWithBranches(String username){
+    public List<RepositoryInfo> findReposWithBranches(String username) {
         List<Repository> repositories = githubClient.findRepositories(username);
         return repositories.stream()
                 .filter(repository -> !repository.fork())
-                .map(repository -> {List<Branch> branches = githubClient.findBranches(username, repository.name());
+                .map(repository -> {
+                    List<Branch> branches = githubClient.findBranches(username, repository.name());
                     return new RepositoryInfo(repository.name(), repository.login(), branches);
                 })
                 .toList();

@@ -9,8 +9,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties(GithubApiConfigurationProperties.class)
 public class GithubRepoInfoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GithubRepoInfoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GithubRepoInfoApplication.class, args);
+    }
 
 }
