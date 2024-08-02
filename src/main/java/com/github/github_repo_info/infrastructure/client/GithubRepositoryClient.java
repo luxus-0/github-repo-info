@@ -1,11 +1,14 @@
 package com.github.github_repo_info.infrastructure.client;
 
 import com.github.github_repo_info.domain.Branch;
-import com.github.github_repo_info.domain.GithubApiConfigurationProperties;
 import com.github.github_repo_info.domain.Repository;
 import com.github.github_repo_info.domain.exception.ResourceNotFoundException;
+import com.github.github_repo_info.infrastructure.config.GithubApiConfigurationProperties;
 import lombok.AllArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,8 +22,6 @@ import java.util.Optional;
 public class GithubRepositoryClient {
     private final RestTemplate restTemplate;
     private final GithubApiConfigurationProperties properties;
-
-    private static final String GITHUB_API_URL = "https://api.github.com";
 
     public List<Repository> findRepositories(String username) {
         String url = properties.getUrl() + "/users/" + username + "/repos";
@@ -41,7 +42,7 @@ public class GithubRepositoryClient {
     }
 
     public List<Branch> findBranches(String username, String repoName) {
-        String url = GITHUB_API_URL + "/repos/" + username + "/" + repoName + "/branches";
+        String url = properties.getUrl() + "/repos/" + username + "/" + repoName + "/branches";
         ResponseEntity<Branch[]> response = restTemplate.getForEntity(url, Branch[].class);
         return Arrays.asList(Objects.requireNonNull(response.getBody()));
     }
