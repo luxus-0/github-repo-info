@@ -24,6 +24,9 @@ public class GithubRepositoryClient {
     private final GithubApiConfigurationProperties properties;
 
     public List<Repository> findRepositories(String username) {
+        if(username == null){
+            throw new IllegalArgumentException("Username repositories is empty");
+        }
         String url = properties.getUrl() + "/users/" + username + "/repos";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", "application/json");
@@ -34,11 +37,9 @@ public class GithubRepositoryClient {
                 url,
                 HttpMethod.GET,
                 requestEntity,
-                Repository[].class
-        );
-        return Optional.ofNullable(response.getBody())
-                .map(Arrays::asList)
-                .orElseThrow(() -> new ResourceNotFoundException("No repositories found for user: " + username));
+                Repository[].class );
+
+        return Arrays.asList(Objects.requireNonNull(response.getBody()));
     }
 
     public List<Branch> findBranches(String username, String repoName) {
