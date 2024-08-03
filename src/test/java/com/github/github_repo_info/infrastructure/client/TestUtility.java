@@ -20,4 +20,81 @@ public class TestUtility {
                 .findAny()
                 .orElse("Empty repo name");
     }
+
+    static String getBodyRepositoryInfo() {
+        return """
+                [
+                    {
+                        "name": "repo1",
+                        "ownerLogin": "Login1",
+                        "branches": [
+                            {
+                            "name": "main",
+                            lastCommitSha : "e3a1b6d6f34efb29b1c98a09a6a587b7efb485d2"
+                            },
+                            {
+                            "name" : "main2",
+                            "lastCommit": "e3a1b6d6f34efb29b1c98a09a6a587b7efb485d7"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "repo2",
+                        "ownerLogin": "Login1",
+                        "branches": []
+                    }
+                ]
+                """;
+    }
+
+    static String GetBodyRepositoryInfo2() {
+        return """
+                [
+                    {
+                        "name": "repo1",
+                        "ownerLogin": "Login1",
+                        "branches": [
+                            {
+                            "name": "main",
+                            lastCommitSha : "e3a1b6d6f34efb29b1c98a09a6a587b7efb485d2"
+                            },
+                            {
+                            "name" : "main2",
+                            "lastCommit": "e3a1b6d6f34efb29b1c98a09a6a587b7efb485d2"
+                            }
+                ]
+                """;
+    }
+
+    static String getBodyBranches() {
+        return """
+                [
+                    {
+                        "name": "main",
+                        "lastCommitSha" : "e3a1b6d6f34efb29b1c98a09a6a587b7efb485d2"
+                    },
+                    {
+                        "name": "dev",
+                        "lastCommitSha" : "a3a1b6d6f34efc49b1c98a09a6a587b7efb485d2"
+                    }
+                ]
+                """;
+    }
+
+    static String getBodyRepository() {
+        return """
+                [
+                    {
+                        "name": "repo1",
+                        "login": "Login1",
+                        "fork": false
+                    },
+                    {
+                        "name": "repo2",
+                        "login": "Login1",
+                        "fork": true
+                    }
+                ]
+                """;
+    }
 }
