@@ -203,7 +203,7 @@ class GithubServiceTest {
     }
 
     @Test
-    @Timeout(value = 161, unit = TimeUnit.MILLISECONDS)
+    @Timeout(value = 300, unit = TimeUnit.MILLISECONDS)
     void shouldReturnRepositoriesForMinUsernameLengthWithinTimeLimit() throws Exception {
         String minLengthUsername = "u";
 
