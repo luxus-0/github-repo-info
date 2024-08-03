@@ -20,6 +20,6 @@ public class GithubController {
 
     @GetMapping("/repos/{username}")
     public ResponseEntity<List<RepositoryInfo>> getRepositories(@PathVariable String username) {
-        return ResponseEntity.ok(githubService.findReposWithBranches(username));
+        return ResponseEntity.ok(githubService.findRepositories(username));
     }
 }
