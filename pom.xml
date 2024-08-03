@@ -28,6 +28,11 @@
 	</scm>
 	<properties>
 		<java.version>22</java.version>
+		<junit-jupiter.version>5.11.0-RC1</junit-jupiter.version>
+		<mockito-core.version>5.12.0</mockito-core.version>
+		<mockito-junit.version>5.12.0</mockito-junit.version>
+		<wiremock-jre8.version>3.0.1</wiremock-jre8.version>
+		<assertj.version>3.26.3</assertj.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -63,6 +68,41 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito-core.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>${mockito-junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8-standalone</artifactId>
+			<version>${wiremock-jre8.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
